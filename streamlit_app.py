@@ -30,8 +30,13 @@ with tabs[1]:
 with tabs[2]:
     st.subheader(f"Volume for MSFT")
     st.bar_chart(df['Volume'])
-    
+
+
 # Tab 4: 🔥 Best & Worst Trading Days
+
+# Calculate Daily Return
+df['Daily Return'] = df['Close'].pct_change() * 100
+
 with tabs[3]:
     st.subheader("🔥 Best & Worst Trading Days")
 
