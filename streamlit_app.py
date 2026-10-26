@@ -9,7 +9,12 @@ st.title("Microsoft Stock Data Dashboard by Siyu Lian")
 df = pd.read_csv("msft.csv")
 
 # Set up the 3 tabs on the Dashboard
-tabs = st.tabs(["📋 Raw Data", "📈 Price Chart", "📊 Volume Chart"])
+tabs = st.tabs([
+    "📋 Raw Data",
+    "📈 Price Chart",
+    "📊 Volume Chart",
+    "🔥 Best & Worst Trading Days"
+])
 
 # Tab 1: Raw Data
 with tabs[0]:
@@ -35,4 +40,3 @@ with tabs[3]:
 
     st.write("Best Daily Return:", f"{best_day['Daily Return']:.2f}%")
     st.write("Worst Daily Return:", f"{worst_day['Daily Return']:.2f}%")
-
