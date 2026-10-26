@@ -40,8 +40,25 @@ df['Daily Return'] = df['Close'].pct_change() * 100
 with tabs[3]:
     st.subheader("🔥 Best & Worst Trading Days")
 
+    # Find best and worst trading days
     best_day = df.loc[df['Daily Return'].idxmax()]
     worst_day = df.loc[df['Daily Return'].idxmin()]
 
-    st.write("Best Daily Return:", f"{best_day['Daily Return']:.2f}%")
-    st.write("Worst Daily Return:", f"{worst_day['Daily Return']:.2f}%")
+    # Put results side-by-side
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.metric(
+            label="🚀 Best Daily Return",
+            value=f"{best_day['Daily Return']:.2f}%"
+        )
+
+    with col2:
+        st.metric(
+            label="📉 Worst Daily Return",
+            value=f"{worst_day['Daily Return']:.2f}%"
+        )
+
+    # Show daily return chart
+    st.subheader("📈 Daily Return Changes")
+    st.line_chart(df['Daily Return'])
